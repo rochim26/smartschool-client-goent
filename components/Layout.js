@@ -6,13 +6,14 @@ const Layout = ({ children }) => {
   const router = useRouter();
   const [userLogin, setUserLogin] = useState(null);
 
-  useEffect(() => {
-    try {
-      setUserLogin(JSON.parse(localStorage.getItem("user")));
-    } catch (err) {
-      console.log(err);
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserLogin(user);
     }
-  }, []);
+  } catch (err) {
+    console.log(err);
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("user");
