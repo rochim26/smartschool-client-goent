@@ -8,9 +8,7 @@ const Layout = ({ children }) => {
 
   try {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setUserLogin(user);
-    }
+    setUserLogin(user);
   } catch (err) {
     console.log(err);
   }
