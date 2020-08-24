@@ -35,7 +35,7 @@ const Index = () => {
       headers: {
         Authorization: `Bearer ${user ? user.access_token.token : null}`,
       },
-    });
+    }).catch((err) => router.push("/login"));
 
     setExamClassrooms(r.data);
   };
