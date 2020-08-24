@@ -114,7 +114,7 @@ const index = () => {
                       <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                         {subjects.length
                           ? subjects.filter(
-                              (subjects) => subjects.grade === "XII"
+                              (subjects) => subjects.grade === "XI"
                             ).length
                           : null}
                       </div>
@@ -139,9 +139,8 @@ const index = () => {
                   </div>
                   <div className="h5 mb-0 font-weight-bold text-gray-800">
                     {subjects.length
-                      ? subjects.filter(
-                          (subjects) => subjects.status === "XIII"
-                        ).length
+                      ? subjects.filter((subjects) => subjects.grade === "XII")
+                          .length
                       : null}
                   </div>
                 </div>

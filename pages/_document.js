@@ -36,7 +36,7 @@ class MyDocument extends Document {
           <script src="/vendor/jquery-easing/jquery.easing.min.js" />
 
           {/* <!-- Custom scripts for all pages--> */}
-          <script src="/js/sb-admin-2.min.js" />
+          <script src="/js/sb-admin-2.js" />
         </body>
       </Html>
     );

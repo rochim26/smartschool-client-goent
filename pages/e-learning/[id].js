@@ -4,6 +4,7 @@ import { CLIENT_AXIOS } from "../../client/clientAxios";
 import Link from "next/link";
 import MarkdownEditor from "../../components/MarkdownEditor";
 import ReactMarkdown from "react-markdown";
+import swal from "sweetalert";
 
 const eLearningDetail = ({ id }) => {
   const [subject, setSubject] = useState({});
@@ -28,12 +29,21 @@ const eLearningDetail = ({ id }) => {
   // essay
   const initialState = {
     content: "",
+    note: "",
   };
 
   const [formInput, setFormInput] = useState(initialState);
 
   const handleMarkdown = ({ text }) => {
     setFormInput({ ...formInput, content: text });
+  };
+
+  const handleMarkdownNote = ({ text }) => {
+    setFormInput({ ...formInput, note: text });
+  };
+
+  const handleSave = () => {
+    swal("Berhasil disimpan", "", "success");
   };
 
   return (
@@ -95,24 +105,6 @@ const eLearningDetail = ({ id }) => {
                     data-parent="#subjectMattersAccordion"
                   >
                     <div class="card-body">
-                      {matters.video ? (
-                        <>
-                          <div className="text-center mb-4">
-                            <iframe
-                              width="560"
-                              height="315"
-                              src={`https://www.youtube.com/embed/${
-                                matters.video ? matters.video.substr(32) : null
-                              }`}
-                              frameborder="0"
-                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen
-                            ></iframe>
-                            <p>Yuk simak video berikut</p>
-                          </div>
-                        </>
-                      ) : null}
-                      <ReactMarkdown source={matters.subject_matter} />
                       {matters.essay ? (
                         <>
                           <div className="form-group">
@@ -122,9 +114,51 @@ const eLearningDetail = ({ id }) => {
                               value={formInput.content}
                             />
                           </div>
-                          <button className="btn btn-primary">Simpan</button>
+                          <button
+                            className="btn btn-primary"
+                            onClick={handleSave}
+                          >
+                            Simpan
+                          </button>
                         </>
-                      ) : null}
+                      ) : (
+                        <>
+                          {matters.video ? (
+                            <>
+                              <div className="text-center mb-4">
+                                <iframe
+                                  width="560"
+                                  height="315"
+                                  src={`https://www.youtube.com/embed/${
+                                    matters.video
+                                      ? matters.video.substr(32)
+                                      : null
+                                  }`}
+                                  frameborder="0"
+                                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                  allowfullscreen
+                                ></iframe>
+                                <p>Yuk simak video berikut</p>
+                              </div>
+                            </>
+                          ) : null}
+                          <ReactMarkdown source={matters.subject_matter} />
+                          <hr />
+                          <div className="form-group">
+                            <label>Catatan Pribadi</label>
+                            <MarkdownEditor
+                              onChange={handleMarkdownNote}
+                              value={formInput.note}
+                            />
+                          </div>
+                          <button
+                            className="btn btn-primary"
+                            onClick={handleSave}
+                          >
+                            Simpan
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

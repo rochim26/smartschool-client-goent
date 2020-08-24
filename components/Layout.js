@@ -50,6 +50,35 @@ const Layout = ({ children }) => {
             </Link>
           </li>
 
+          <li className="nav-item">
+            <a
+              className="nav-link collapsed"
+              href="#"
+              data-toggle="collapse"
+              data-target="#artikelMenu"
+              aria-expanded="true"
+              aria-controls="artikelMenu"
+            >
+              <i className="fas fa-fw fa-pen"></i>
+              <span>Artikel</span>
+            </a>
+            <div
+              id="artikelMenu"
+              className="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordionSidebar"
+            >
+              <div className="bg-white py-2 collapse-inner rounded">
+                <Link href="/artikel/tambah">
+                  <a className="collapse-item">Tulis baru</a>
+                </Link>
+                <Link href="/artikel">
+                  <a className="collapse-item">Karyaku</a>
+                </Link>
+              </div>
+            </div>
+          </li>
+
           {userLogin ? (
             userLogin.user.role == "student" ? (
               <>
@@ -118,6 +147,36 @@ const Layout = ({ children }) => {
                     </div>
                   </div>
                 </li>
+
+                {/* <!-- Nav Item - Pages Collapse Menu --> */}
+                <li className="nav-item">
+                  <a
+                    className="nav-link collapsed"
+                    href="#"
+                    data-toggle="collapse"
+                    data-target="#ujianMenu"
+                    aria-expanded="true"
+                    aria-controls="ujianMenu"
+                  >
+                    <i className="fas fa-fw fa-book-open"></i>
+                    <span>Ujian</span>
+                  </a>
+                  <div
+                    id="ujianMenu"
+                    className="collapse"
+                    aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar"
+                  >
+                    <div className="bg-white py-2 collapse-inner rounded">
+                      <Link href="/daftar-ujian/tambah">
+                        <a className="collapse-item">Buat Baru</a>
+                      </Link>
+                      <Link href="/daftar-ujian">
+                        <a className="collapse-item">Lihat Data</a>
+                      </Link>
+                    </div>
+                  </div>
+                </li>
               </>
             ) : null
           ) : null}
@@ -127,35 +186,6 @@ const Layout = ({ children }) => {
 
           {/* <!-- Heading --> */}
           {/* <div className="sidebar-heading">Addons</div> */}
-
-          <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#artikelMenu"
-              aria-expanded="true"
-              aria-controls="artikelMenu"
-            >
-              <i className="fas fa-fw fa-pen"></i>
-              <span>Artikel</span>
-            </a>
-            <div
-              id="artikelMenu"
-              className="collapse"
-              aria-labelledby="headingTwo"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link href="/artikel/tambah">
-                  <a className="collapse-item">Tulis baru</a>
-                </Link>
-                <Link href="/artikel">
-                  <a className="collapse-item">Karyaku</a>
-                </Link>
-              </div>
-            </div>
-          </li>
 
           {/* <!-- Sidebar Toggler (Sidebar) --> */}
           <div className="text-center d-none d-md-inline">
@@ -185,7 +215,7 @@ const Layout = ({ children }) => {
               <ul className="navbar-nav ml-auto">
                 {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
                 <li className="nav-item dropdown no-arrow d-sm-none">
-                  <a
+                  {/* <a
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="searchDropdown"
@@ -195,7 +225,7 @@ const Layout = ({ children }) => {
                     aria-expanded="false"
                   >
                     <i className="fas fa-search fa-fw"></i>
-                  </a>
+                  </a> */}
                   {/* <!-- Dropdown - Messages --> */}
                   <div
                     className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -222,7 +252,7 @@ const Layout = ({ children }) => {
 
                 {/* <!-- Nav Item - Alerts --> */}
                 <li className="nav-item dropdown no-arrow mx-1">
-                  <a
+                  {/* <a
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="alertsDropdown"
@@ -232,9 +262,8 @@ const Layout = ({ children }) => {
                     aria-expanded="false"
                   >
                     <i className="fas fa-bell fa-fw"></i>
-                    {/* <!-- Counter - Alerts --> */}
                     <span className="badge badge-danger badge-counter">3+</span>
-                  </a>
+                  </a> */}
                   {/* <!-- Dropdown - Alerts --> */}
                   <div
                     className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -303,7 +332,7 @@ const Layout = ({ children }) => {
 
                 {/* <!-- Nav Item - Messages --> */}
                 <li className="nav-item dropdown no-arrow mx-1">
-                  <a
+                  {/* <a
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="messagesDropdown"
@@ -313,9 +342,8 @@ const Layout = ({ children }) => {
                     aria-expanded="false"
                   >
                     <i className="fas fa-envelope fa-fw"></i>
-                    {/* <!-- Counter - Messages --> */}
                     <span className="badge badge-danger badge-counter">7</span>
-                  </a>
+                  </a> */}
                   {/* <!-- Dropdown - Messages --> */}
                   <div
                     className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -444,7 +472,7 @@ const Layout = ({ children }) => {
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
                   >
-                    <a className="dropdown-item" href="#">
+                    {/* <a className="dropdown-item" href="#">
                       <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       Profile
                     </a>
@@ -455,7 +483,7 @@ const Layout = ({ children }) => {
                     <a className="dropdown-item" href="#">
                       <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                       Activity Log
-                    </a>
+                    </a> */}
                     <div className="dropdown-divider"></div>
                     <a
                       className="dropdown-item"
@@ -497,11 +525,6 @@ const Layout = ({ children }) => {
         {/* <!-- End of Content Wrapper --> */}
       </div>
       {/* <!-- End of Page Wrapper --> */}
-
-      {/* <!-- Scroll to Top Button--> */}
-      <a className="scroll-to-top rounded" href="#page-top">
-        <i className="fas fa-angle-up"></i>
-      </a>
 
       {/* <!-- Logout Modal--> */}
       <div
