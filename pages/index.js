@@ -12,13 +12,10 @@ import { useRouter } from "next/router";
 
 const Index = () => {
   const router = useRouter();
-  const [userLogin, setUserLogin] = useState(null);
+  let user;
 
   try {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setUserLogin(user);
-    }
+    user = JSON.parse(localStorage.getItem("user"));
   } catch (err) {
     console.log(err);
   }
@@ -38,13 +35,9 @@ const Index = () => {
       headers: {
         Authorization: `Bearer ${user ? user.access_token.token : null}`,
       },
-    }).catch((err) => {
-      router.push("/login");
     });
 
-    if (r) {
-      setExamClassrooms(r.data);
-    }
+    setExamClassrooms(r.data);
   };
 
   useEffect(() => {
@@ -54,7 +47,7 @@ const Index = () => {
   return (
     <Layout>
       <h1 className="h3 mb-4 text-gray-800">
-        Halo, Selamat Datang {userLogin ? userLogin.user.name : null} 👋
+        Halo, Selamat Datang {user ? user.user.name : null} 👋
       </h1>
     </Layout>
   );
