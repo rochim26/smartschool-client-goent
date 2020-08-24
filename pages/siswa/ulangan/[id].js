@@ -72,7 +72,12 @@ const index = ({ id }) => {
                             <span class="badge badge-warning">
                               Terindikasi Kecurangan
                               <a
-                                href={score.user.whatsapp}
+                                href={`https://wa.me/62${
+                                  score.user.whatsapp
+                                }?text=${"Halo, nak apakah kamu benar dalam menjawab pertanyaan ini?"} ${
+                                  examTake.examQuestion.question
+                                }`}
+                                target="_blank"
                                 className="ml-2 badge badge-success"
                               >
                                 <i className="fab fa-whatsapp mr-2"></i>
