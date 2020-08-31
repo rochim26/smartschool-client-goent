@@ -152,7 +152,7 @@ const index = () => {
           </div>
         </div>
       </div>
-      <Link href="/subjects/tambah">
+      <Link href="/mata-pelajaran/tambah">
         <a className="btn btn-primary mb-4 shadow">
           <i className="fas fa-plus mr-2"></i>Tambah Baru
         </a>

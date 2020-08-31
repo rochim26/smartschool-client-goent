@@ -28,14 +28,14 @@ const Layout = ({ children }) => {
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
-          <a className="sidebar-brand d-flex align-items-center justify-content-center">
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">
-              GO ENT <sup>26</sup>
-            </div>
-          </a>
+          <Link href="/">
+            <a className="sidebar-brand d-flex align-items-center justify-content-center text-white">
+              <div className="sidebar-brand-icon">
+                <i className="fas fa-school"></i>
+              </div>
+              <div className="sidebar-brand-text mx-3">Smart School</div>
+            </a>
+          </Link>
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />

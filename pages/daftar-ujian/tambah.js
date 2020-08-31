@@ -112,10 +112,19 @@ const tambah = () => {
                 value={formInput.type}
               >
                 <option value="">----Pilih Kategori----</option>
-                <option value="harian">Harian</option>
-                <option value="tengah">Tengah</option>
-                <option value="semester">Semester</option>
-                <option value="akhir semester">Akhir Semester</option>
+                <option value="ujian harian">Ujian Harian</option>
+                <option value="penilaian tengah 1">
+                  Penilaian Tengah Semester 1
+                </option>
+                <option value="ujian semester 1">
+                  Penilaian Akhir Semester 1
+                </option>
+                <option value="penilaian tengah 2">
+                  Penilaian Tengah Semester 2
+                </option>
+                <option value="ujian semester 2">
+                  Penilaian Akhir Semester 2
+                </option>
               </select>
             </div>
             <Input

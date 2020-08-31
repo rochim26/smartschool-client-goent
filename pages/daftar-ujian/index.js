@@ -60,69 +60,50 @@ const index = () => {
                   <th>Opsi</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th>Judul</th>
-                  <th>Tipe</th>
-                  <th>Soal PG</th>
-                  <th>Soal Essay</th>
-                  <th>Durasi</th>
-                  <th>Google Meet Link</th>
-                  <th>Opsi</th>
-                </tr>
-              </tfoot>
               <tbody>
-                {ujian.map((ujian) => {
-                  return (
-                    <tr key={ujian.id}>
-                      <td>{ujian.title}</td>
-                      <td>{ujian.type}</td>
-                      <td>{ujian.pg_limit}</td>
-                      <td>{ujian.essay_limit}</td>
-                      <td>{ujian.duration}</td>
-                      <td>{ujian.gmeet}</td>
-                      <td>
-                        <div className="dropdown">
-                          <button
-                            className="btn btn-secondary dropdown-toggle"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Opsi
-                          </button>
-                          <div
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <Link
-                              href={`/daftar-ujian/[id]`}
-                              as={`/daftar-ujian/${ujian.id}`}
+                {ujian.length ? (
+                  ujian.map((ujian) => {
+                    return (
+                      <tr key={ujian.id}>
+                        <td>{ujian.title}</td>
+                        <td>{ujian.type}</td>
+                        <td>{ujian.pg_limit}</td>
+                        <td>{ujian.essay_limit}</td>
+                        <td>{ujian.duration}</td>
+                        <td>{ujian.gmeet}</td>
+                        <td>
+                          <div className="dropdown">
+                            <button
+                              className="btn btn-secondary dropdown-toggle"
+                              type="button"
+                              id="dropdownMenuButton"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
                             >
-                              <a className="dropdown-item">Detail</a>
-                            </Link>
-                            <a
-                              className="dropdown-item"
-                              href="#!"
-                              onClick={() => handleStatus(ujian.id, 1)}
+                              Opsi
+                            </button>
+                            <div
+                              className="dropdown-menu"
+                              aria-labelledby="dropdownMenuButton"
                             >
-                              Edit
-                            </a>
-                            <a
-                              className="dropdown-item"
-                              href="#!"
-                              onClick={() => handleStatus(ujian.id, 2)}
-                            >
-                              Hapus
-                            </a>
+                              <Link
+                                href={`/daftar-ujian/[id]`}
+                                as={`/daftar-ujian/${ujian.id}`}
+                              >
+                                <a className="dropdown-item">Detail</a>
+                              </Link>
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan="7">Tidak ada data</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

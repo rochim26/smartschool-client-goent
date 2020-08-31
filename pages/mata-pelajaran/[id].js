@@ -22,8 +22,6 @@ const index = ({ id }) => {
       },
     });
 
-    console.log(res.data);
-
     setSubject(res.data);
   };
 
@@ -33,75 +31,98 @@ const index = ({ id }) => {
 
   return (
     <Layout>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link href="/mata-pelajaran">
+              <a>
+                <i className="fas fa-chevron-left mr-2"></i>Kembali
+              </a>
+            </Link>
+          </li>
+        </ol>
+      </nav>
+
       <h1 className="h3 mb-4 text-gray-800">
         {subject.name} Kelas {subject.grade}
       </h1>
-      <div className="card border-left-primary shadow h-100 py-2 mb-4">
-        <div className="card-body">
-          <div className="row no-gutters align-items-center">
-            <div className="col mr-2">
-              <div className="h5 font-weight-bold text-primary text-uppercase mb-1">
-                Kelas Tatap Muka
-              </div>
-              <div className="mt-4 font-weight-bold">
-                <a
-                  className="btn btn-primary"
-                  href={subject.gmeet}
-                  target="_blank"
-                >
-                  Mulai
-                </a>
+
+      <div className="row mb-4">
+        <div className="col-md-6">
+          <div className="card border-left-primary shadow h-100 py-2 mb-4">
+            <div className="card-body">
+              <div className="row no-gutters align-items-center">
+                <div className="col mr-2">
+                  <div className="h5 font-weight-bold text-primary text-uppercase mb-1">
+                    Kelas Tatap Muka
+                  </div>
+                  <div className="mt-4 font-weight-bold">
+                    <a
+                      className="btn btn-primary"
+                      href={subject.gmeet}
+                      target="_blank"
+                    >
+                      Mulai
+                    </a>
+                  </div>
+                </div>
+                <div className="col-auto">
+                  <i className="fas fa-pen fa-2x text-gray-300"></i>
+                </div>
               </div>
             </div>
-            <div className="col-auto">
-              <i className="fas fa-pen fa-2x text-gray-300"></i>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card border-left-primary shadow h-100 py-2 mb-4">
+            <div className="card-body">
+              <div className="row no-gutters align-items-center">
+                <div className="col mr-2">
+                  <div className="h5 font-weight-bold text-primary text-uppercase mb-1">
+                    Daftar Kelas Mengajar
+                  </div>
+                  <div className="mt-4 font-weight-bold">
+                    <ol>
+                      {subject.classroomSubjects
+                        ? subject.classroomSubjects.map((subject) => {
+                            return (
+                              <li>
+                                <Link
+                                  href="/kelas-mengajar/[classroomId]"
+                                  as={`/kelas-mengajar/${subject.classroom.id}`}
+                                >
+                                  <a>
+                                    {subject.classroom ? (
+                                      <span>
+                                        {subject.classroom.grade}{" "}
+                                        {subject.classroom
+                                          ? subject.classroom.major.name
+                                          : null}{" "}
+                                        {subject.classroom.code}
+                                      </span>
+                                    ) : null}
+                                  </a>
+                                </Link>
+                              </li>
+                            );
+                          })
+                        : null}
+                    </ol>
+                  </div>
+                </div>
+                <div className="col-auto">
+                  <i className="fas fa-pen fa-2x text-gray-300"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="card border-left-primary shadow h-100 py-2 mb-4">
-        <div className="card-body">
-          <div className="row no-gutters align-items-center">
-            <div className="col mr-2">
-              <div className="h5 font-weight-bold text-primary text-uppercase mb-1">
-                Daftar Kelas Mengajar
-              </div>
-              <div className="mt-4 font-weight-bold">
-                <ol>
-                  {subject.classroomSubjects
-                    ? subject.classroomSubjects.map((subject) => {
-                        return (
-                          <li>
-                            <Link
-                              href="/kelas-mengajar/[classroomId]"
-                              as={`/kelas-mengajar/${subject.classroom.id}`}
-                            >
-                              <a>
-                                {subject.classroom ? (
-                                  <span>
-                                    {subject.classroom.grade}{" "}
-                                    {subject.classroom
-                                      ? subject.classroom.major.name
-                                      : null}{" "}
-                                    {subject.classroom.code}
-                                  </span>
-                                ) : null}
-                              </a>
-                            </Link>
-                          </li>
-                        );
-                      })
-                    : null}
-                </ol>
-              </div>
-            </div>
-            <div className="col-auto">
-              <i className="fas fa-pen fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Link href="/subjects/tambah">
+
+      <Link
+        href="/mata-pelajaran/[id]/tambah"
+        as={`/mata-pelajaran/${id}/tambah`}
+      >
         <a className="btn btn-primary mb-4 shadow">
           <i className="fas fa-plus mr-2"></i>Tambah Baru
         </a>

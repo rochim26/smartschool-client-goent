@@ -50,6 +50,7 @@ const InstruksiUjian = ({ examClassroom }) => {
     );
 
     if (r.data) {
+      console.log(r.data);
       router.push(
         `/ujian/[examClassroom]/[soal]`,
         `/ujian/${r.data.exam_classroom_id}/${r.data.examTakes[0].id}`
