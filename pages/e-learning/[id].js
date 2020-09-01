@@ -18,7 +18,6 @@ const eLearningDetail = ({ id }) => {
     }
 
     const res = await CLIENT_AXIOS.get(`/students/subjects/${id}`);
-    console.log(res.data);
     setSubject(res.data);
   };
 

@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { CLIENT_AXIOS } from "../../client/clientAxios";
+import { CLIENT_AXIOS, BASE_URL } from "../../client/clientAxios";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
 import Link from "next/link";
@@ -96,7 +96,7 @@ const index = ({ id }) => {
                                       <span>
                                         {subject.classroom.grade}{" "}
                                         {subject.classroom
-                                          ? subject.classroom.major.name
+                                          ? subject.classroom.major.abbr
                                           : null}{" "}
                                         {subject.classroom.code}
                                       </span>
@@ -173,18 +173,13 @@ const index = ({ id }) => {
                           <td>{matters.essay}</td>
                           <td>
                             {matters.video ? (
-                              <iframe
-                                width="560"
-                                height="315"
-                                src={`https://www.youtube.com/embed/${
-                                  matters.video
-                                    ? matters.video.substr(32)
-                                    : null
-                                }`}
-                                frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                              ></iframe>
+                              <video width="320" height="240" controls>
+                                <source
+                                  src={`${BASE_URL}/uploads/${matters.video}`}
+                                  type="video/mp4"
+                                />
+                                Your browser does not support the video tag.
+                              </video>
                             ) : (
                               "-"
                             )}

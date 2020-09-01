@@ -174,6 +174,9 @@ const Layout = ({ children }) => {
                       <Link href="/daftar-ujian">
                         <a className="collapse-item">Lihat Data</a>
                       </Link>
+                      <Link href="/jadwal-ujian">
+                        <a className="collapse-item">Lihat Jadwal</a>
+                      </Link>
                     </div>
                   </div>
                 </li>

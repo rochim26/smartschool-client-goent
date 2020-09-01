@@ -36,6 +36,18 @@ const index = ({ classroomId }) => {
 
   return (
     <Layout>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link href="/mata-pelajaran">
+              <a>
+                <i className="fas fa-chevron-left mr-2"></i>Kembali
+              </a>
+            </Link>
+          </li>
+        </ol>
+      </nav>
+
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 className="h3 mb-0 text-gray-800">Daftar Anggota Kelas</h1>
       </div>

@@ -5,6 +5,7 @@ import { CLIENT_AXIOS } from "../../../client/clientAxios";
 import Countdown from "react-countdown";
 import moment from "moment";
 import swal from "sweetalert";
+import firebaseApp from "../../../util/firebase";
 
 const InstruksiUjian = ({ examClassroom, soal }) => {
   let user;
@@ -14,13 +15,40 @@ const InstruksiUjian = ({ examClassroom, soal }) => {
     console.log(err);
   }
 
+  const router = useRouter();
+  const [userLogin, setUserLogin] = useState(null);
+
+  useEffect(() => {
+    try {
+      setUserLogin(JSON.parse(localStorage.getItem("user")));
+    } catch (err) {
+      router.push("/login");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
+
   const [currentQuestion, setCurrentQuestion] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
-  const router = useRouter();
 
   const handleClick = async (idx, id) => {
     setCurrentQuestion(idx);
     setCurrentTime(new Date());
+
+    const activityExam = firebaseApp.database().ref("examTake");
+    const activityData = {
+      user_id: examTake.user_id,
+      exam_classroom_id: examTake.exam_classroom_id,
+      status: examTake.status,
+      exam_score_id: examTake.id,
+      activity: new Date().getTime(),
+    };
+
+    activityExam.push(activityData);
+
     router.push(
       `/ujian/[examClassroom]/[soal]`,
       `/ujian/${examClassroom}/${id}`
@@ -105,6 +133,13 @@ const InstruksiUjian = ({ examClassroom, soal }) => {
 
     getExamTake();
     getQuestion();
+  };
+
+  const timesUp = () => {
+    router.push(
+      `/ujian/detail/[examClassroom]/[soal]`,
+      `/ujian/detail/${examClassroom}/${soal}`
+    );
   };
 
   const handleSubmit = () => {
@@ -440,9 +475,11 @@ const InstruksiUjian = ({ examClassroom, soal }) => {
                 </h6>
               </div>
               <div className="card-body">
-                {question.examQuestion
-                  ? question.examQuestion.question
-                  : "Loading..."}
+                <h4>
+                  {question.examQuestion
+                    ? question.examQuestion.question
+                    : "Loading..."}
+                </h4>
               </div>
             </div>
 
@@ -507,7 +544,7 @@ const InstruksiUjian = ({ examClassroom, soal }) => {
                   Siswa waktu:{" "}
                   <Countdown
                     date={moment(examTake.end_time).format()}
-                    onComplete={handleSubmit}
+                    onComplete={timesUp}
                   ></Countdown>
                 </h6>
               </div>
@@ -548,6 +585,52 @@ const InstruksiUjian = ({ examClassroom, soal }) => {
                   Selesai
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <!-- Logout Modal--> */}
+      <div
+        className="modal fade"
+        id="logoutModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Yakin ingin keluar?
+              </h5>
+              <button
+                className="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              Pilih "Logout" untuk keluar dari aplikasi
+            </div>
+            <div className="modal-footer">
+              <button
+                className="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={handleLogout}
+                data-dismiss="modal"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </div>

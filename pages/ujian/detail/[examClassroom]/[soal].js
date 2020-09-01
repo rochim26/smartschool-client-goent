@@ -120,9 +120,11 @@ const Ujian = ({ examClassroom, soal }) => {
               </h6>
             </div>
             <div className="card-body">
-              {question.examQuestion
-                ? question.examQuestion.question
-                : "Loading..."}
+              <h4>
+                {question.examQuestion
+                  ? question.examQuestion.question
+                  : "Loading..."}
+              </h4>
             </div>
           </div>
 
@@ -178,7 +180,7 @@ const Ujian = ({ examClassroom, soal }) => {
           )}
         </div>
         <div className="col-sm-12 col-md-4">
-          <div className="card shadow mb-4">
+          {/* <div className="card shadow mb-4">
             <div className="card-header py-3">
               <h6 className="m-0 font-weight-bold text-primary">
                 Siswa waktu:{" "}
@@ -188,7 +190,7 @@ const Ujian = ({ examClassroom, soal }) => {
                 ></Countdown>
               </h6>
             </div>
-          </div>
+          </div> */}
           <div className="card shadow mb-4">
             <div className="card-header py-3">
               <h6 className="m-0 font-weight-bold text-primary">Daftar Soal</h6>

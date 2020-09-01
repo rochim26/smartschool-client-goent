@@ -113,16 +113,16 @@ const tambah = () => {
               >
                 <option value="">----Pilih Kategori----</option>
                 <option value="ujian harian">Ujian Harian</option>
-                <option value="penilaian tengah 1">
+                <option value="penilaian tengah semester 1">
                   Penilaian Tengah Semester 1
                 </option>
-                <option value="ujian semester 1">
+                <option value="penilaian akhir semester 1">
                   Penilaian Akhir Semester 1
                 </option>
-                <option value="penilaian tengah 2">
+                <option value="penilaian tengah semester 2">
                   Penilaian Tengah Semester 2
                 </option>
-                <option value="ujian semester 2">
+                <option value="penilaian akhir semester 2">
                   Penilaian Akhir Semester 2
                 </option>
               </select>

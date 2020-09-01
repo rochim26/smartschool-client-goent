@@ -27,10 +27,9 @@ const index = ({ id }) => {
     "is_answer[2]": 0,
     "is_answer[3]": 0,
     "is_answer[4]": 0,
-    is_essay: false,
+    is_essay: 0,
     question: "",
     estimation: 0,
-    is_essay: "",
     image: "",
     imageUpload: "",
     audio: "",
@@ -196,6 +195,46 @@ const index = ({ id }) => {
     fetchSchedule();
   }, []);
 
+  // import
+  const [importExcel, setImportExcel] = useState("");
+  const [importExcelUpload, setImportExcelUpload] = useState("");
+  const handleImportExcel = (e) => {
+    setImportExcel(e.target.value);
+    setImportExcelUpload(e.target.files[0]);
+  };
+
+  const handleImportExcelSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append("upload", importExcelUpload);
+    console.log(importExcelUpload);
+
+    let user;
+    try {
+      user = JSON.parse(localStorage.getItem("user"));
+    } catch (err) {
+      console.log(err);
+    }
+
+    const res = await CLIENT_AXIOS.post(
+      `/teachers/exams/${id}/import_question`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${user.access_token.token}`,
+        },
+      }
+    ).catch((err) => console.log(err.response));
+
+    if (res) {
+      swal("Berhasil!", "Soal berhasil tersimpan", "success");
+      fetchDetail();
+      setImportExcel("");
+      setImportExcelUpload("");
+    }
+  };
+
   return (
     <Layout>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -359,6 +398,19 @@ const index = ({ id }) => {
               <h6 className="m-0 font-weight-bold text-primary">Buat Soal</h6>
             </div>
             <div className="card-body">
+              <form onSubmit={handleImportExcelSubmit}>
+                <Input
+                  name="importExcel"
+                  label="Import Soal dengan Excel"
+                  type="file"
+                  value={importExcel}
+                  onChange={(e) => handleImportExcel(e)}
+                />
+                <button className="btn btn-success">
+                  Import Excel <i className="fas fa-file-excel"></i>
+                </button>
+              </form>
+              <hr />
               <ul className="list-group mb-4">
                 <li className="list-group-item">
                   <div className="form-group">

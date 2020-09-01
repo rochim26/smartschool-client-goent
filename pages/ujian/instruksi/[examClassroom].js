@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { CLIENT_AXIOS } from "../../../client/clientAxios";
+import firebaseApp from "../../../util/firebase";
 
 const InstruksiUjian = ({ examClassroom }) => {
   const [exam, setExam] = useState({});
@@ -50,7 +51,18 @@ const InstruksiUjian = ({ examClassroom }) => {
     );
 
     if (r.data) {
-      console.log(r.data);
+      const { user_id, exam_classroom_id, status, id } = r.data;
+      const examTake = firebaseApp.database().ref("examTake");
+      const examTakeData = {
+        user_id,
+        exam_classroom_id,
+        status,
+        exam_score_id: id,
+        activity: new Date().getTime(),
+      };
+
+      examTake.push(examTakeData);
+
       router.push(
         `/ujian/[examClassroom]/[soal]`,
         `/ujian/${r.data.exam_classroom_id}/${r.data.examTakes[0].id}`

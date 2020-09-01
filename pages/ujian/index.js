@@ -121,10 +121,23 @@ const Index = () => {
                     </div>
                     <small>
                       {examClassroom.examScores ? (
-                        moment(examClassroom.start_time) <= new Date() &&
-                        moment(examClassroom.end_time) >= new Date() ? (
+                        new Date(examClassroom.start_time) <= new Date() &&
+                        new Date(examClassroom.end_time) >= new Date() ? (
                           examClassroom.examScores[0] ? (
-                            <button className="btn btn-primary">Selesai</button>
+                            examClassroom.examScores[0].status ? (
+                              <Link
+                                href={`/ujian/instruksi/[examClassroom]`}
+                                as={`/ujian/instruksi/${examClassroom.id}`}
+                              >
+                                <a className="btn btn-primary">
+                                  Lanjutkan Ujian
+                                </a>
+                              </Link>
+                            ) : (
+                              <button className="btn btn-primary">
+                                Selesai
+                              </button>
+                            )
                           ) : (
                             <Link
                               href={`/ujian/instruksi/[examClassroom]`}

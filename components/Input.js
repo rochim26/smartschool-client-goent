@@ -13,6 +13,7 @@ const Input = ({ type, id, value, onChange, label, name }) => {
           value={value}
           onChange={(e) => onChange(e)}
           name={name}
+          required
         />
       </div>
     </div>
