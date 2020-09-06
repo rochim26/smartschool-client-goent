@@ -180,43 +180,24 @@ const index = ({ id }) => {
                                 />
                                 Your browser does not support the video tag.
                               </video>
+                            ) : matters.video_url ? (
+                              <iframe
+                                src={matters.video_url}
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                              ></iframe>
                             ) : (
                               "-"
                             )}
                           </td>
                           <td>
                             <Link
-                              href="/mata-pelajaran/[id]"
-                              as={`/mata-pelajaran/${subject.id}`}
+                              href="/mata-pelajaran/[id]/materi/[materi]"
+                              as={`/mata-pelajaran/${subject.id}/materi/2`}
                             >
                               <a className="btn btn-info mr-2">Detail</a>
                             </Link>
-                            <div className="dropdown">
-                              <button
-                                className="btn btn-secondary dropdown-toggle"
-                                type="button"
-                                id="dropdownMenuButton"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                Opsi
-                              </button>
-                              <div
-                                className="dropdown-menu"
-                                aria-labelledby="dropdownMenuButton"
-                              >
-                                <a className="dropdown-item" href="#!">
-                                  Publik
-                                </a>
-                                <a className="dropdown-item" href="#!">
-                                  Internal
-                                </a>
-                                <a className="dropdown-item" href="#!">
-                                  Sembunyikan
-                                </a>
-                              </div>
-                            </div>
                           </td>
                         </tr>
                       );

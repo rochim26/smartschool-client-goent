@@ -60,7 +60,7 @@ const Layout = ({ children }) => {
               aria-controls="artikelMenu"
             >
               <i className="fas fa-fw fa-pen"></i>
-              <span>Artikel</span>
+              <span>Kehidupan Sekolah</span>
             </a>
             <div
               id="artikelMenu"

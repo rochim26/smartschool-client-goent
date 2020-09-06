@@ -55,7 +55,7 @@ const index = () => {
 
   return (
     <Layout>
-      <h1 className="h3 mb-4 text-gray-800">Halaman Artikel</h1>
+      <h1 className="h3 mb-4 text-gray-800">Halaman Kehidupan Sekolah</h1>
       <div className="row">
         <div className="col-xl-3 col-md-6 mb-4">
           <div className="card border-left-primary shadow h-100 py-2">

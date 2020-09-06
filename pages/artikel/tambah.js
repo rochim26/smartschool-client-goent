@@ -102,7 +102,9 @@ const tambah = () => {
 
       <div className="card shadow">
         <div className="card-header py-3">
-          <h6 className="m-0 font-weight-bold text-primary">Tambah Artikel</h6>
+          <h6 className="m-0 font-weight-bold text-primary">
+            Tambah Kehidupan Sekolah
+          </h6>
         </div>
         <div className="card-body">
           <form onSubmit={handleSubmit}>

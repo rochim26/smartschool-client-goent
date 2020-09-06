@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import { CLIENT_AXIOS } from "../../client/clientAxios";
+import { CLIENT_AXIOS, BASE_URL } from "../../client/clientAxios";
 import Link from "next/link";
 import MarkdownEditor from "../../components/MarkdownEditor";
 import ReactMarkdown from "react-markdown";
@@ -121,42 +121,56 @@ const eLearningDetail = ({ id }) => {
                           </button>
                         </>
                       ) : (
-                        <>
-                          {matters.video ? (
-                            <>
-                              <div className="text-center mb-4">
-                                <iframe
-                                  width="560"
-                                  height="315"
-                                  src={`https://www.youtube.com/embed/${
-                                    matters.video
-                                      ? matters.video.substr(32)
-                                      : null
-                                  }`}
-                                  frameborder="0"
-                                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                  allowfullscreen
-                                ></iframe>
-                                <p>Yuk simak video berikut</p>
-                              </div>
-                            </>
-                          ) : null}
-                          <ReactMarkdown source={matters.subject_matter} />
-                          <hr />
-                          <div className="form-group">
-                            <label>Catatan Pribadi</label>
+                        <div className="row">
+                          <div className="col-lg-6">
+                            {matters.video ? (
+                              <video width="320" height="240" controls>
+                                <source
+                                  src={`${BASE_URL}/uploads/${matters.video}`}
+                                  type="video/mp4"
+                                />
+                                Your browser does not support the video tag.
+                              </video>
+                            ) : matters.video_url ? (
+                              <iframe
+                                src={matters.video_url}
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                              ></iframe>
+                            ) : (
+                              "-"
+                            )}
+                            <ReactMarkdown source={matters.subject_matter} />
+                            <div className="text-center">
+                              <button className="btn btn-success">
+                                Selesai
+                              </button>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="form-group">
+                              <label>Catatan</label>
+                              <MarkdownEditor
+                                onChange={handleMarkdownNote}
+                                value={formInput.note}
+                              />
+                            </div>
+                            <button
+                              className="btn btn-primary"
+                              onClick={handleSave}
+                            >
+                              Simpan
+                            </button>
+                          </div>
+                          <div className="col-lg-12 mt-4">
+                            <h4>Diskusi</h4>
                             <MarkdownEditor
                               onChange={handleMarkdownNote}
                               value={formInput.note}
                             />
                           </div>
-                          <button
-                            className="btn btn-primary"
-                            onClick={handleSave}
-                          >
-                            Simpan
-                          </button>
-                        </>
+                        </div>
                       )}
                     </div>
                   </div>

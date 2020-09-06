@@ -398,6 +398,13 @@ const index = ({ id }) => {
               <h6 className="m-0 font-weight-bold text-primary">Buat Soal</h6>
             </div>
             <div className="card-body">
+              <a
+                href="/import-soal-goent.xlsx"
+                target="_blank"
+                className="btn btn-secondary"
+              >
+                Download Template Soal
+              </a>
               <form onSubmit={handleImportExcelSubmit}>
                 <Input
                   name="importExcel"
