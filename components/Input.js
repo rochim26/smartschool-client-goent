@@ -4,7 +4,16 @@ const Input = ({ type, id, value, onChange, label, name }) => {
   return (
     <div>
       <div className="form-group">
-        {label ? <label htmlFor={id}>{label}</label> : null}
+        {label ? (
+          <label htmlFor={id}>
+            {label}
+            {id == "gmeet" ? (
+              <a href="https://meet.google.com" target="_blank">
+                Ambil Link disini
+              </a>
+            ) : null}
+          </label>
+        ) : null}
 
         <input
           type={type || "text"}

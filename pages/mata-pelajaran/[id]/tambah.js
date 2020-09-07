@@ -143,7 +143,7 @@ const tambah = ({ id }) => {
               >
                 <i className="fas fa-edit"></i>
               </button>
-              <p>Quiz</p>
+              <p>Under maintenance</p>
             </div>
           </div>
           <form onSubmit={handleSubmit}>

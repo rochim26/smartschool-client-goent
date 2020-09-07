@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { CLIENT_AXIOS } from "../../client/clientAxios";
+import { CLIENT_AXIOS, BASE_URL } from "../../client/clientAxios";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
 import Link from "next/link";
@@ -520,6 +520,25 @@ const index = ({ id }) => {
                                 Estimasi Waktu : {examQuestion.estimation} menit
                               </span>
                             </div>
+                            {examQuestion.image ? (
+                              <div>
+                                <img
+                                  src={`${BASE_URL}/uploads/${examQuestion.image}`}
+                                  width="200px"
+                                />
+                              </div>
+                            ) : null}
+                            {examQuestion.audio ? (
+                              <div>
+                                <audio controls>
+                                  <source
+                                    src={`${BASE_URL}/uploads/${examQuestion.audio}`}
+                                    type="audio/mpeg"
+                                  />
+                                  Your browser does not support the audio tag.
+                                </audio>
+                              </div>
+                            ) : null}
                             {idx + 1}. {examQuestion.question}
                           </li>
                           {examQuestion

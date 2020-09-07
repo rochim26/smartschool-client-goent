@@ -103,15 +103,6 @@ const tambah = () => {
               onChange={handleChange}
               label="Judul"
             />
-            <Input
-            type="file"
-            onChange={(e) => {
-              var fr = new FileReader()
-              fr.onload = () => {
-                e.textContent
-              }
-            }}
-            />
             <div class="form-group">
               <label for="type">Kategori Ujian</label>
               <select
