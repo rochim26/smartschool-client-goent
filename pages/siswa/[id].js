@@ -51,12 +51,17 @@ const index = ({ id }) => {
       <div className="card shadow mb-4">
         <div className="card-header">Kontak</div>
         <div className="card-body">
-          <span className="btn btn-success">
+          <a
+            href={`https://wa.me/6${
+              student.whatsapp ? student.whatsapp.substring(1) : null
+            }`}
+            className="btn btn-success"
+          >
             <i className="fab fa-whatsapp"></i> {student.whatsapp}
-          </span>
-          <span className="btn btn-danger ml-4">
+          </a>
+          <a href={`mailto:${student.email}`} className="btn btn-danger ml-4">
             <i className="fas fa-inbox"></i> {student.email}
-          </span>
+          </a>
         </div>
       </div>
 

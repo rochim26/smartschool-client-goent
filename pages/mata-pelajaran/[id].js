@@ -147,19 +147,10 @@ const index = ({ id }) => {
                   <th>Durasi membaca</th>
                   <th>Esai</th>
                   <th>Video</th>
+                  <th>PPT/PDF/Word</th>
                   <th>Opsi</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th>Judul</th>
-                  <th>Isi Materi</th>
-                  <th>Durasi membaca</th>
-                  <th>Esai</th>
-                  <th>Video</th>
-                  <th>Opsi</th>
-                </tr>
-              </tfoot>
               <tbody>
                 {subject.subjectMatters
                   ? subject.subjectMatters.map((matters) => {
@@ -190,6 +181,16 @@ const index = ({ id }) => {
                             ) : (
                               "-"
                             )}
+                          </td>
+                          <td>
+                            {matters.attachment ? (
+                              <a
+                                href={`${BASE_URL}/uploads/${matters.attachment}`}
+                                className="btn btn-primary rounded"
+                              >
+                                Download
+                              </a>
+                            ) : null}
                           </td>
                           <td>
                             <Link

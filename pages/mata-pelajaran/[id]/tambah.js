@@ -15,8 +15,11 @@ const tambah = ({ id }) => {
     estimation: 0,
     subject_matter: "",
     essay: "",
+    video_url: "",
     video: "",
     videoUpload: "",
+    attachment: "",
+    attachmentUpload: "",
   };
   const [formInput, setFormInput] = useState(initialState);
 
@@ -52,6 +55,12 @@ const tambah = ({ id }) => {
         videoUpload: e.target.files[0],
         video: e.target.value,
       });
+    } else if (e.target.id == "attachment") {
+      setFormInput({
+        ...formInput,
+        attachmentUpload: e.target.files[0],
+        attachment: e.target.value,
+      });
     } else {
       setFormInput({ ...formInput, [e.target.id]: e.target.value });
     }
@@ -74,6 +83,8 @@ const tambah = ({ id }) => {
     data.append("subject_matter", formInput.subject_matter);
     data.append("essay", formInput.essay);
     data.append("video", formInput.videoUpload);
+    data.append("attachment", formInput.attachmentUpload);
+    data.append("video_url", formInput.video_url);
 
     let user;
 
@@ -168,6 +179,19 @@ const tambah = ({ id }) => {
                   value={formInput.video}
                   onChange={handleChange}
                   label="Video (opsional)"
+                />
+                <Input
+                  id="attachment"
+                  type="file"
+                  value={formInput.attachment}
+                  onChange={handleChange}
+                  label="Materi PDF/PPT/Word"
+                />
+                <Input
+                  id="video_url"
+                  value={formInput.video_url}
+                  onChange={handleChange}
+                  label="Video URL"
                 />
                 <div className="form-group">
                   <label>Isi Materi</label>

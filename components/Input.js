@@ -15,15 +15,27 @@ const Input = ({ type, id, value, onChange, label, name }) => {
           </label>
         ) : null}
 
-        <input
-          type={type || "text"}
-          className="form-control"
-          id={id}
-          value={value}
-          onChange={(e) => onChange(e)}
-          name={name}
-          required
-        />
+        {type == "password" ? (
+          <div className="input-group">
+            <input
+              type={type || "text"}
+              className="form-control"
+              id={id}
+              value={value}
+              onChange={(e) => onChange(e)}
+              name={name}
+            />
+          </div>
+        ) : (
+          <input
+            type={type || "text"}
+            className="form-control"
+            id={id}
+            value={value}
+            onChange={(e) => onChange(e)}
+            name={name}
+          />
+        )}
       </div>
     </div>
   );
