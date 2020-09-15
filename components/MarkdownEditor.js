@@ -18,12 +18,36 @@ const mdParser = new MarkdownIt(/* Markdown-it options */);
 //   console.log("handleEditorChange", text);
 // }
 
-export default ({ onChange, value }) => {
+export default ({ onChange, value, plugin, height, name, defaultValue }) => {
   return (
     <MdEditor
+    defaultValue={defaultValue}
       value={value}
+      name={name}
+      plugins={
+        plugin ?? [
+          "header",
+          "font-bold",
+          "font-italic",
+          "font-underline",
+          "font-strikethrough",
+          "list-unordered",
+          "list-ordered",
+          "block-quote",
+          "block-wrap",
+          "block-code-inline",
+          "block-code-block",
+          "table",
+          "image",
+          "link",
+          "clear",
+          "logger",
+          "mode-toggle",
+          "full-screen",
+        ]
+      }
       placeholder="Tekan icon keyboard untuk memperbesar layar"
-      style={{ height: "500px" }}
+      style={{ height: height ?? "500px" }}
       renderHTML={(text) => mdParser.render(text)}
       onChange={onChange}
       onImageUpload={async (file) => {

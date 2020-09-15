@@ -16,6 +16,7 @@ const Index = () => {
 
   try {
     user = JSON.parse(localStorage.getItem("user"));
+    window.navigator.geolocation.getCurrentPosition(console.log, console.log);
   } catch (err) {
     console.log(err);
   }

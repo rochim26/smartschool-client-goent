@@ -119,7 +119,7 @@ const Layout = ({ children }) => {
                 <div className="sidebar-heading">Guru</div>
 
                 {/* <!-- Nav Item - Pages Collapse Menu --> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a
                     className="nav-link collapsed"
                     href="#"
@@ -146,7 +146,7 @@ const Layout = ({ children }) => {
                       </Link>
                     </div>
                   </div>
-                </li>
+                </li> */}
 
                 {/* <!-- Nav Item - Pages Collapse Menu --> */}
                 <li className="nav-item">
@@ -482,11 +482,13 @@ const Layout = ({ children }) => {
                     <a className="dropdown-item" href="#">
                       <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                       Settings
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Activity Log
                     </a> */}
+                    <Link href="/profil">
+                      <a className="dropdown-item">
+                        <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profil
+                      </a>
+                    </Link>
                     <div className="dropdown-divider"></div>
                     <a
                       className="dropdown-item"

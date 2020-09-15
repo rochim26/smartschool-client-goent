@@ -202,38 +202,12 @@ const index = () => {
                         </a>
                       </td>
                       <td>
-                        <div className="dropdown">
-                          <Link
-                            href="/mata-pelajaran/[id]"
-                            as={`/mata-pelajaran/${subject.id}`}
-                          >
-                            <a className="btn btn-info mr-2">Detail</a>
-                          </Link>
-                          <button
-                            className="btn btn-secondary dropdown-toggle"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Opsi
-                          </button>
-                          <div
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a className="dropdown-item" href="#!">
-                              Publik
-                            </a>
-                            <a className="dropdown-item" href="#!">
-                              Internal
-                            </a>
-                            <a className="dropdown-item" href="#!">
-                              Sembunyikan
-                            </a>
-                          </div>
-                        </div>
+                        <Link
+                          href="/mata-pelajaran/[id]"
+                          as={`/mata-pelajaran/${subject.id}`}
+                        >
+                          <a className="btn btn-info mr-2">Detail</a>
+                        </Link>
                       </td>
                     </tr>
                   );
