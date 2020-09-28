@@ -93,6 +93,12 @@ const index = () => {
                               >
                                 <a className="dropdown-item">Detail</a>
                               </Link>
+                              <Link
+                                href={`/daftar-ujian/[id]`}
+                                as={`/daftar-ujian/${ujian.id}`}
+                              >
+                                <a className="dropdown-item">Edit</a>
+                              </Link>
                             </div>
                           </div>
                         </td>
