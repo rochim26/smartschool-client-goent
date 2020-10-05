@@ -869,9 +869,9 @@ const index = ({ id }) => {
                                   {idx + 1 == 3 ? "C" : null}{" "}
                                   {idx + 1 == 4 ? "D" : null}{" "}
                                   {idx + 1 == 5 ? "E" : null}.{" "}
-                                  {answer.id === currentStateAnswerId
-                                    ? null
-                                    : answer.answer}
+                                  {answer.id === currentStateAnswerId ? null : (
+                                    <ReactMarkdown source={answer.answer} />
+                                  )}
                                   {answer.id === currentStateAnswerId ? (
                                     <>
                                       <Input
