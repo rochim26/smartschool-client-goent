@@ -48,7 +48,7 @@ const Index = () => {
   return (
     <Layout>
       <h1 className="h3 mb-4 text-gray-800">
-        Halo, Selamat Datang {user ? user.user.name : null} 👋
+        Halo, Selamat Datang {user ? user.user?.name : null} 👋
       </h1>
     </Layout>
   );

@@ -80,7 +80,7 @@ const Layout = ({ children }) => {
           </li>
 
           {userLogin ? (
-            userLogin.user.role == "student" ? (
+            userLogin.user?.role == "student" ? (
               <>
                 {/* <!-- Divider --> */}
                 <hr className="sidebar-divider" />
@@ -110,7 +110,7 @@ const Layout = ({ children }) => {
           ) : null}
 
           {userLogin ? (
-            userLogin.user.role == "teacher" ? (
+            userLogin.user?.role == "teacher" ? (
               <>
                 {/* <!-- Divider --> */}
                 <hr className="sidebar-divider" />
@@ -119,7 +119,7 @@ const Layout = ({ children }) => {
                 <div className="sidebar-heading">Guru</div>
 
                 {/* <!-- Nav Item - Pages Collapse Menu --> */}
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <a
                     className="nav-link collapsed"
                     href="#"
@@ -146,7 +146,7 @@ const Layout = ({ children }) => {
                       </Link>
                     </div>
                   </div>
-                </li> */}
+                </li>
 
                 {/* <!-- Nav Item - Pages Collapse Menu --> */}
                 <li className="nav-item">
@@ -463,7 +463,7 @@ const Layout = ({ children }) => {
                     aria-expanded="false"
                   >
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-                      {userLogin ? userLogin.user.name : null}
+                      {userLogin ? userLogin.user?.name : null}
                     </span>
                     <img
                       className="img-profile rounded-circle"

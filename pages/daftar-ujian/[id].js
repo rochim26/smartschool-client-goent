@@ -8,6 +8,8 @@ import moment from "moment";
 import "moment/locale/id";
 import MarkdownEditor from "../../components/MarkdownEditor";
 import Axios from "axios";
+import MarkdownIt from "markdown-it";
+import ReactMarkdown from "react-markdown";
 moment.locale("id");
 
 const index = ({ id }) => {
@@ -836,7 +838,8 @@ const index = ({ id }) => {
                             </span>
                           </div>
 
-                          <h4>{examQuestion.question}</h4>
+                          {/* <h4>{examQuestion.question}</h4> */}
+                          <ReactMarkdown source={examQuestion.question} />
 
                           {examQuestion.audio ? (
                             <div>
